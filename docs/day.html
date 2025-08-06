@@ -1,123 +1,331 @@
-<!DOCTYPE html>
+
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Encuentro Corporativo Clickie 2025</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.6;
-    background: #f9f9f9;
-    color: #333;
-  }
-  h1, h2 {
-    text-align: center;
-    color: #004080;
-  }
-  h2 {
-    margin-top: 40px;
-  }
-  .place {
-    background: #fff;
-    padding: 15px 20px;
-    margin-bottom: 30px;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  }
-  img {
-    max-width: 100%;
-    border-radius: 6px;
-    margin-top: 10px;
-  }
-  .info {
-    white-space: pre-wrap;
-    margin-top: 8px;
-  }
-  footer {
-    text-align: center;
-    margin-top: 50px;
-    font-size: 0.9em;
-    color: #666;
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta Evento de Cierre de Año - Clickie</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals (Stone, Teal) -->
+    <!-- Application Structure Plan: A single-page, thematic layout. A header with key stats, followed by an interactive tabbed section for comparing the three locations. Each tab shows details and contributes to a single, comparative radar chart. This structure facilitates direct comparison without overwhelming the user. The flow concludes with a clear recommendation and actionable next steps, guiding the decision-making process. -->
+    <!-- Visualization & Content Choices: Report Info: Location comparison -> Goal: Compare -> Viz: Interactive Tabs (HTML/JS) + Radar Chart (Chart.js) -> Interaction: User clicks tabs to switch views; the radar chart provides a multi-attribute visual summary. -> Justification: Tabs organize complex info cleanly. A radar chart is highly effective for comparing multiple options across the same criteria, making it ideal for a board-level decision. -> Library: Chart.js for the chart. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .tab-active {
+            border-color: #0d9488;
+            color: #0d9488;
+            font-weight: 600;
+        }
+    </style>
 </head>
-<body>
-<h1>Encuentro Corporativo Clickie 2025</h1>
-<p style="text-align:center; font-weight: bold;">Opciones de Espacios con Alojamiento</p>
-<p style="text-align:center;">Fecha propuesta: 20 y 21 de noviembre de 2025<br />
-Presupuesto estimado: $250.000 CLP por persona<br />
-Ubicación: Cerca de Santiago de Chile</p>
+<body class="bg-stone-50 text-stone-800">
 
-<div class="place">
-  <h2>1. Casa Maipo Lodge Hotel – Cajón del Maipo</h2>
-  <div class="info">
-Ubicación: Camino al Volcán #9660, San José de Maipo  
-Alojamiento: 14 habitaciones estándar y suites  
-Servicios destacados: Spa, restaurante con menú de tres tiempos, piscina temperada, senderos para trekking  
-Ideal para: Grupos que buscan desconectar en la naturaleza con comodidad
-  </div>
-  <img src="https://tse4.mm.bing.net/th/id/OIP.HTvpA4Ec_Pgv4D_UOzuaAAHaD4?pid=Api" alt="Casa Maipo Lodge Hotel" />
-</div>
+    <div class="container mx-auto max-w-6xl p-4 sm:p-6 lg:p-8">
 
-<div class="place">
-  <h2>2. Hacienda Porvenir – Colina</h2>
-  <div class="info">
-Ubicación: San Martín Km 26 con Calle Porvenir, Colina  
-Alojamiento: Casa de campo restaurada de 1880  
-Servicios destacados: Parque de más de dos hectáreas, jardines con árboles de más de 300 años, carpa de lujo de 1000 m²  
-Ideal para: Eventos corporativos en un entorno campestre y elegante
-  </div>
-  <img src="https://tse4.mm.bing.net/th/id/OIP.iN_MLfzkxdX2sUSwD3HjwAHaE8?r=0&pid=Api" alt="Hacienda Porvenir" />
-</div>
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-teal-800 mb-4">Propuesta Evento de Cierre de Año</h1>
+            <p class="text-2xl font-light text-stone-600">Clickie 2025</p>
+        </header>
 
-<div class="place">
-  <h2>3. Vértigo Park – La Reina</h2>
-  <div class="info">
-Ubicación: Av. Alcalde Fernando Castillo Velasco 11095, Parque Mahuida, La Reina  
-Servicios destacados: Actividades de alto impacto como canopy, paintball y swing, terrazas con vista panorámica, música ambiental  
-Ideal para: Jornadas de team building con enfoque en aventura y adrenalina
-  </div>
-  <img src="https://tse2.mm.bing.net/th/id/OIP.7C6eRNX_47dFn5R1oXYqXAHaJQ?pid=Api" alt="Vértigo Park" />
-</div>
+        <section id="summary" class="bg-white p-6 rounded-2xl shadow-lg mb-12">
+            <h2 class="text-2xl font-bold text-center mb-6 text-teal-700">Parámetros del Evento</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                <div class="bg-stone-100 p-4 rounded-lg">
+                    <p class="text-3xl font-bold text-teal-600">35</p>
+                    <p class="text-stone-600">Personas</p>
+                </div>
+                <div class="bg-stone-100 p-4 rounded-lg">
+                    <p class="text-3xl font-bold text-teal-600">$250.000</p>
+                    <p class="text-stone-600">Presupuesto p/p</p>
+                </div>
+                <div class="bg-stone-100 p-4 rounded-lg">
+                    <p class="text-3xl font-bold text-teal-600">Noviembre</p>
+                    <p class="text-stone-600">Fecha Estimada</p>
+                </div>
+            </div>
+        </section>
 
-<div class="place">
-  <h2>4. Hotel Casa de Campo – San Fernando</h2>
-  <div class="info">
-Ubicación: Santa Cruz, Valle de Colchagua  
-Alojamiento: Habitaciones con vista al campo, decoración rústica  
-Servicios destacados: Piscina exterior, jardines, actividades recreativas, proximidad a museos del Valle  
-Ideal para: Grupos que buscan una experiencia cultural y relajada en un entorno vinícola
-  </div>
-  <img src="https://tse4.mm.bing.net/th/id/OIP.a7TSkxL9M2hv5rvVX6yumAHaE8?pid=Api" alt="Hotel Casa de Campo" />
-</div>
+        <main id="proposal-details">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg">
+                <h2 class="text-3xl font-bold text-center mb-2 text-teal-700">Análisis de Opciones</h2>
+                <p class="text-center text-stone-600 mb-8">Hemos explorado tres destinos que se ajustan a nuestros objetivos. Utilice las pestañas para explorar cada opción y el gráfico para una comparación visual.</p>
 
-<div class="place">
-  <h2>5. Casa Paine – Paine</h2>
-  <div class="info">
-Ubicación: Paine, Región Metropolitana  
-Servicios destacados: Amplios jardines, árboles centenarios, espacios para actividades grupales  
-Ideal para: Eventos tranquilos y personalizados en un entorno natural
-  </div>
-  <img src="https://tse3.mm.bing.net/th/id/OIP.N0--5UucS78Hlr-sEgHv5wHaE7?pid=Api" alt="Casa Paine" />
-</div>
+                <div class="border-b border-stone-200 mb-8">
+                    <nav class="-mb-px flex justify-center space-x-4 md:space-x-8" aria-label="Tabs">
+                        <button class="tab-button whitespace-nowrap py-4 px-1 border-b-2 font-medium text-lg border-transparent text-stone-500 hover:text-teal-600 hover:border-teal-300" data-target="opcion1">Cajón del Maipo</button>
+                        <button class="tab-button whitespace-nowrap py-4 px-1 border-b-2 font-medium text-lg border-transparent text-stone-500 hover:text-teal-600 hover:border-teal-300" data-target="opcion2">Olmué</button>
+                        <button class="tab-button whitespace-nowrap py-4 px-1 border-b-2 font-medium text-lg border-transparent text-stone-500 hover:text-teal-600 hover:border-teal-300" data-target="opcion3">Valle de Colchagua</button>
+                    </nav>
+                </div>
 
-<div class="place">
-  <h2>6. Hacienda del Maipo – San José de Maipo</h2>
-  <div class="info">
-Ubicación: Camino San José de Maipo 05014, Las Vizcachas  
-Servicios destacados: Parques, esculturas, piscinas ornamentales, arquitectura de estilo clásico francés  
-Ideal para: Eventos exclusivos en un entorno natural y romántico
-  </div>
-  <img src="https://tse4.mm.bing.net/th/id/OIP.7-Pdh4gjMCd8YoPhB2KwMQHaE8?pid=Api" alt="Hacienda del Maipo" />
-</div>
+                <div id="tab-content">
+                </div>
 
-<footer>
-  <p>Documento generado por ChatGPT para Clickie – 2025</p>
-</footer>
+                <div class="mt-12">
+                     <h3 class="text-2xl font-bold text-center mb-6 text-teal-700">Comparación Visual de Atributos</h3>
+                    <div class="chart-container relative mx-auto w-full max-w-2xl h-80 md:h-96">
+                        <canvas id="comparisonChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+                <div id="recommendation" class="bg-teal-50 border-l-4 border-teal-500 p-6 rounded-2xl shadow-lg">
+                    <h2 class="text-2xl font-bold mb-4 text-teal-800">Nuestra Recomendación</h2>
+                    <p class="text-stone-700 mb-2">Recomendamos priorizar la opción del <strong class="font-semibold">Cajón del Maipo (Cascada de las Ánimas)</strong> por su excelente balance entre costo, cercanía a Santiago y una experiencia de team building de alto impacto y memorable para el equipo.</p>
+                    <p class="text-stone-700">Ofrece la mezcla perfecta de aventura y espacios adecuados para nuestras presentaciones, alineándose con una cultura de equipo dinámica y colaborativa.</p>
+                </div>
+
+                <div id="next-steps" class="bg-white p-6 rounded-2xl shadow-lg">
+                    <h2 class="text-2xl font-bold mb-4 text-teal-700">Próximos Pasos</h2>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <span class="bg-teal-500 text-white rounded-full h-6 w-6 text-sm flex items-center justify-center mr-3 mt-1 flex-shrink-0">1</span>
+                            <span class="text-stone-700">Cotizar de forma detallada con los tres recintos, solicitando paquetes para grupos y sus tarifas para noviembre.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-teal-500 text-white rounded-full h-6 w-6 text-sm flex items-center justify-center mr-3 mt-1 flex-shrink-0">2</span>
+                            <span class="text-stone-700">Presentar los presupuestos finales y la propuesta detallada de actividades al equipo directivo.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-teal-500 text-white rounded-full h-6 w-6 text-sm flex items-center justify-center mr-3 mt-1 flex-shrink-0">3</span>
+                            <span class="text-stone-700">Reservar con anticipación para asegurar la disponibilidad en un mes de alta demanda.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+
+        <footer class="text-center mt-12 py-4">
+            <p class="text-stone-500">&copy; 2025 Clickie. Todos los derechos reservados.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const proposalData = {
+                opcion1: {
+                    title: "Opción 1: Cajón del Maipo",
+                    focus: "Naturaleza y Aventura",
+                    ideal: "Cercanía a Santiago, entorno natural imponente y gran oferta de actividades de team building como rafting o canopy. Es perfecto para fomentar la confianza y el trabajo en equipo en un ambiente dinámico.",
+                    venue: "Cascada de las Ánimas",
+                    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Caj%C3%B3n_del_Maipo_-_Chile.jpg/1280px-Caj%C3%B3n_del_Maipo_-_Chile.jpg",
+                    lodging: [
+                        { name: "Cabañas Cascada de las Ánimas", description: "Cabañas acogedoras en un entorno natural, ideales para grupos. Varias configuraciones disponibles.", image: "https://cascadadelasanimas.cl/wp-content/uploads/2021/08/Caban%CC%83as-Cascada-de-las-Animas-Exterior-1024x683.jpg" },
+                        { name: "Suites Borde Río", description: "Suites con vistas al río, para una experiencia más cómoda y privada.", image: "https://cascadadelasanimas.cl/wp-content/uploads/2021/08/Suite-Borde-Rio-Interior-1024x683.jpg" }
+                    ],
+                    gallery: [
+                        { src: "https://cascadadelasanimas.cl/wp-content/uploads/2021/08/Rafting-Cajon-del-Maipo-1024x683.jpg", alt: "Actividad de Rafting en Cajón del Maipo" },
+                        { src: "https://cascadadelasanimas.cl/wp-content/uploads/2021/08/Canopy-Cajon-del-Maipo-1024x683.jpg", alt: "Actividad de Canopy en Cajón del Maipo" },
+                        { src: "https://cascadadelasanimas.cl/wp-content/uploads/2021/08/Sala-de-Seminarios-Cascada-de-las-Animas-1024x683.jpg", alt: "Salón de Eventos en Cascada de las Ánimas" }
+                    ]
+                },
+                opcion2: {
+                    title: "Opción 2: Olmué",
+                    focus: "Relajo y Ambiente Campestre",
+                    ideal: "Ofrece un clima agradable y un ambiente tranquilo. Es una excelente opción si buscamos un evento más relajado, con actividades al aire libre pero menos intensas, como caminatas o talleres.",
+                    venue: "Club El Endrino",
+                    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Olmu%C3%A9_-_Chile.jpg/1280px-Olmu%C3%A9_-_Chile.jpg",
+                    lodging: [
+                        { name: "Habitaciones Estándar Club El Endrino", description: "Habitaciones cómodas y funcionales dentro del recinto del club, con acceso a todas las instalaciones.", image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/06/61/89/club-el-endrino.jpg?w=1200&h=-1&s=1" },
+                        { name: "Cabañas Familiares", description: "Cabañas más grandes para grupos pequeños o familias, con mayor privacidad.", image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/06/61/8b/club-el-endrino.jpg?w=1200&h=-1&s=1" }
+                    ],
+                    gallery: [
+                        { src: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/06/61/90/club-el-endrino.jpg?w=1200&h=-1&s=1", alt: "Piscina en Club El Endrino" },
+                        { src: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/06/61/8c/club-el-endrino.jpg?w=1200&h=-1&s=1", alt: "Áreas verdes en Olmué" },
+                        { src: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/06/61/8a/club-el-endrino.jpg?w=1200&h=-1&s=1", alt: "Instalaciones deportivas en Club El Endrino" }
+                    ]
+                },
+                opcion3: {
+                    title: "Opción 3: Valle de Colchagua",
+                    focus: "Enoturismo y Sofisticación",
+                    ideal: "Una opción de alta gama para un equipo que aprecia el buen vino y la gastronomía. Las actividades pueden centrarse en catas, talleres de maridaje o visitas a viñas, ofreciendo una experiencia memorable.",
+                    venue: "Hotel Santa Cruz",
+                    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Vi%C3%B1a_Montes_-_Valle_de_Colchagua.jpg/1280px-Vi%C3%B1a_Montes_-_Valle_de_Colchagua.jpg",
+                    lodging: [
+                        { name: "Habitaciones Clásicas Hotel Santa Cruz", description: "Habitaciones elegantes con todas las comodidades de un hotel de primer nivel.", image: "https://www.hotelsantacruz.cl/wp-content/uploads/2019/07/Habitacion-Superior-Hotel-Santa-Cruz-1024x683.jpg" },
+                        { name: "Suites Premium", description: "Suites más amplias con vistas panorámicas, ideales para una experiencia de lujo.", image: "https://www.hotelsantacruz.cl/wp-content/uploads/2019/07/Suite-Hotel-Santa-Cruz-1024x683.jpg" }
+                    ],
+                    gallery: [
+                        { src: "https://www.hotelsantacruz.cl/wp-content/uploads/2019/07/Museo-de-Colchagua-Hotel-Santa-Cruz-1024x683.jpg", alt: "Museo de Colchagua" },
+                        { src: "https://www.hotelsantacruz.cl/wp-content/uploads/2019/07/Piscina-Hotel-Santa-Cruz-1024x683.jpg", alt: "Piscina del Hotel Santa Cruz" },
+                        { src: "https://www.hotelsantacruz.cl/wp-content/uploads/2019/07/Restaurant-Hotel-Santa-Cruz-1024x683.jpg", alt: "Restaurante del Hotel Santa Cruz" }
+                    ]
+                }
+            };
+
+            const tabs = document.querySelectorAll('.tab-button');
+            const tabContentContainer = document.getElementById('tab-content');
+
+            function updateContent(targetId) {
+                const data = proposalData[targetId];
+                let lodgingHtml = '';
+                if (data.lodging && data.lodging.length > 0) {
+                    lodgingHtml = `
+                        <h4 class="text-xl font-bold text-teal-700 mt-8 mb-4">Opciones de Alojamiento:</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            ${data.lodging.map(item => `
+                                <div class="bg-stone-50 p-4 rounded-lg shadow-sm">
+                                    <img src="${item.image}" alt="${item.name}" class="rounded-md mb-3 w-full h-40 object-cover">
+                                    <p class="font-semibold text-stone-800">${item.name}</p>
+                                    <p class="text-sm text-stone-600">${item.description}</p>
+                                </div>
+                            `).join('')}
+                        </div>
+                    `;
+                }
+
+                let galleryHtml = '';
+                if (data.gallery && data.gallery.length > 0) {
+                    galleryHtml = `
+                        <h4 class="text-xl font-bold text-teal-700 mt-8 mb-4">Galería de Fotos:</h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                            ${data.gallery.map(item => `
+                                <div class="bg-stone-50 p-2 rounded-lg shadow-sm">
+                                    <img src="${item.src}" alt="${item.alt}" class="rounded-md w-full h-40 object-cover">
+                                    <p class="text-xs text-center text-stone-600 mt-2">${item.alt}</p>
+                                </div>
+                            `).join('')}
+                        </div>
+                    `;
+                }
+
+                tabContentContainer.innerHTML = `
+                    <div id="${targetId}" class="tab-pane">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                            <div>
+                                <h3 class="text-2xl font-bold text-teal-700">${data.title}</h3>
+                                <p class="text-lg font-medium text-stone-600 mb-4">${data.focus}</p>
+                                <p class="text-stone-700 mb-4">${data.ideal}</p>
+                                <div class="bg-stone-100 p-4 rounded-lg">
+                                    <p class="font-semibold text-stone-800">Lugar Sugerido:</p>
+                                    <p class="text-teal-600 font-bold text-xl">${data.venue}</p>
+                                </div>
+                            </div>
+                            <div>
+                                <img src="${data.image}" alt="${data.title}" class="rounded-lg shadow-md w-full h-auto object-cover">
+                            </div>
+                        </div>
+                        ${lodgingHtml}
+                        ${galleryHtml}
+                    </div>
+                `;
+            }
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(t => t.classList.remove('tab-active'));
+                    tab.classList.add('tab-active');
+                    updateContent(tab.dataset.target);
+                });
+            });
+
+            tabs[0].click();
+
+            const chartData = {
+                labels: ['Aventura', 'Relajo', 'Sofisticación', 'Cercanía a Stgo', 'Costo-Beneficio'],
+                datasets: [
+                    {
+                        label: 'Cajón del Maipo',
+                        data: [9, 6, 5, 8, 9],
+                        fill: true,
+                        backgroundColor: 'rgba(13, 148, 136, 0.2)',
+                        borderColor: 'rgb(13, 148, 136)',
+                        pointBackgroundColor: 'rgb(13, 148, 136)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgb(13, 148, 136)'
+                    },
+                    {
+                        label: 'Olmué',
+                        data: [5, 9, 6, 7, 8],
+                        fill: true,
+                        backgroundColor: 'rgba(88, 28, 135, 0.2)',
+                        borderColor: 'rgb(88, 28, 135)',
+                        pointBackgroundColor: 'rgb(88, 28, 135)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgb(88, 28, 135)'
+                    },
+                    {
+                        label: 'Valle de Colchagua',
+                        data: [4, 8, 9, 5, 6],
+                        fill: true,
+                        backgroundColor: 'rgba(190, 18, 58, 0.2)',
+                        borderColor: 'rgb(190, 18, 58)',
+                        pointBackgroundColor: 'rgb(190, 18, 58)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgb(190, 18, 58)'
+                    }
+                ]
+            };
+
+            const config = {
+                type: 'radar',
+                data: chartData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    elements: {
+                        line: {
+                            borderWidth: 3
+                        }
+                    },
+                    scales: {
+                        r: {
+                            angleLines: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            },
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            },
+                            pointLabels: {
+                                font: {
+                                    size: 14
+                                },
+                                color: '#333'
+                            },
+                            ticks: {
+                                backdropColor: 'transparent',
+                                stepSize: 2
+                            },
+                            suggestedMin: 0,
+                            suggestedMax: 10
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.r !== null) {
+                                        label += context.parsed.r;
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                },
+            };
+
+            const ctx = document.getElementById('comparisonChart').getContext('2d');
+            new Chart(ctx, config);
+        });
+    </script>
 </body>
 </html>
